@@ -2,6 +2,10 @@
 #include <string.h>
 #include <stdlib.h>
 
+#pragma once
+#define _CRT_SECURE_NO_WARNINGS 1
+#define _WINSOCK_DEPRECATED_NO_WARNINGS 1
+
 void prepend(char *s1, char *s2) {
     char *dup;
     sprintf(s1,"%s%s",s2,(dup=strdup(s1)));
@@ -45,7 +49,7 @@ int main(int argc, char *argv[])
     char out[4096];
 
     if (argc != 2) {
-        printf("Parametre incorrecte\n");
+        printf("Args error\n");
     } else {
         recursive_tree(atoi(argv[1]), nom, out);
         out[strlen(out)-2] = '\n';

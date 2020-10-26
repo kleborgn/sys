@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/ls_R.dir/main.c.o  -o ls_R 

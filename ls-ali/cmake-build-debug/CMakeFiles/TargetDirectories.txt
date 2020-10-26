@@ -1,0 +1,3 @@
+/mnt/c/Users/Kilian/source/repos/sys/ls-ali/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/Kilian/source/repos/sys/ls-ali/cmake-build-debug/CMakeFiles/ls_ali.dir
+/mnt/c/Users/Kilian/source/repos/sys/ls-ali/cmake-build-debug/CMakeFiles/edit_cache.dir

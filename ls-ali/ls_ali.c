@@ -6,6 +6,9 @@
 #include <dirent.h>
 #include <string.h>
 
+#pragma once
+#define _CRT_SECURE_NO_WARNINGS 1
+
 int main(int argc, char *argv[])
 {
     DIR *p_dir = NULL;
@@ -19,8 +22,6 @@ int main(int argc, char *argv[])
     } else {
         p_dir = opendir(argv[1]);
 
-        //p_dirent = readdir(p_dir); // .
-        //p_dirent = readdir(p_dir); // ..
         p_dirent = readdir(p_dir);
 
         while (p_dirent != NULL) {
@@ -29,20 +30,34 @@ int main(int argc, char *argv[])
             strcat(path, "/");
             strcat(path, p_dirent->d_name);
             stat(path, &buff);
+
             // Inode number
-            printf("%ld\t", buff.st_ino);
+            printf("%-16ld\t", buff.st_ino);
+
             // File type
-            if(S_ISDIR(buff.st_mode)) {
+            if((((buff.st_mode)) & 0170000u) == (0040000)) {
                 printf("d\t");
             } else {
                 printf("-\t");
             }
+
             // Rights
-            //printf("%lo\t", (unsigned long) p_buff->st_mode);
+            printf( (buff.st_mode & 0400u) ? "r" : "-");
+            printf( (buff.st_mode & 0200u) ? "w" : "-");
+            printf( (buff.st_mode & 0100u) ? "x" : "-");
+            printf( (buff.st_mode & (0400u >> 3u)) ? "r" : "-");
+            printf( (buff.st_mode & (0200u >> 3u)) ? "w" : "-");
+            printf( (buff.st_mode & (0100u >> 3u)) ? "x" : "-");
+            printf( (buff.st_mode & ((0400u >> 3u) >> 3u)) ? "r" : "-");
+            printf( (buff.st_mode & ((0200u >> 3u) >> 3u)) ? "w" : "-");
+            printf( (buff.st_mode & ((0100u >> 3u) >> 3u)) ? "x" : "-");
+            printf("\t");
             // man 7 inode to see consts
+
             // Links number
             printf("%ld\t", buff.st_nlink);
 
+            // Name
             printf("%s\n", p_dirent->d_name);
 
             p_dirent = readdir(p_dir);
