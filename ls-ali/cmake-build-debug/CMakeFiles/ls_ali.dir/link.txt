@@ -1,1 +1,0 @@
-/usr/bin/cc -g   CMakeFiles/ls_ali.dir/ls_ali.c.o  -o ls_ali 

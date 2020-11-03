@@ -1,3 +1,0 @@
-/mnt/c/Users/Kilian/source/repos/sys/ls-R/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/Kilian/source/repos/sys/ls-R/cmake-build-debug/CMakeFiles/ls_R.dir
-/mnt/c/Users/Kilian/source/repos/sys/ls-R/cmake-build-debug/CMakeFiles/edit_cache.dir
