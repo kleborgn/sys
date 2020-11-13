@@ -14,7 +14,7 @@ void prepend(char *s1, char *s2) {
 }
 
 int extract_ppid(int un_pid, char *name) {
-    char path[1024] = "/proc/";
+    char path[] = "/proc/";
     char s_pid[64];
     sprintf(s_pid, "%d", un_pid);
     strcat(path, s_pid);
