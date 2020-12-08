@@ -8,7 +8,7 @@
 #define RD_SIZE 1024
 
 int main() {
-    FILE *fd;
+    int fd;
     char buf[RD_SIZE];
     fd = open("../mon_tube", O_RDONLY);
     read(fd, buf, RD_SIZE);
@@ -20,6 +20,7 @@ int main() {
     }
 
     printf("%s\n", buf);
+    close(fd);
     
     return 0;
 }
