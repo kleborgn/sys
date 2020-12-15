@@ -4,6 +4,8 @@
 #include <sys/types.h>
 #include <string.h>
 #include <stdbool.h>
+#include <signal.h>
+#include <math.h>
 
 int fini;
 
@@ -65,13 +67,15 @@ int main()
     // Parent process
     if (p > 0)
     {
+        signal(SIGUSR1, handler);
         while (1)
         {
-            signal(SIGUSR1, handler);
+            
+            fini = false;
             printf("p : %d\n", timerA);
             timerA += 2;
             sleep(1);
-
+            kill(p, SIGUSR1);
             do_job_pere();
         }
     }
@@ -79,12 +83,16 @@ int main()
     // child process
     else
     {
+        signal(SIGUSR1, handler);
+        pause();
         while (1)
         {
+            
+            fini = false;
             printf("c : %d\n", timerB);
             timerB += 2;
             sleep(1);
-
+            kill(getppid(), SIGUSR1);
             do_job_fils();
         }
         
